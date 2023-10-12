@@ -1,9 +1,10 @@
 #include<Servo.h> 
+// Servo initialization
 Servo Servo_left;
 Servo Servo_right; 
 // Ultrasonic pin
-#define TrigPin 12
-#define EchoPin 11
+#define TrigPin 12  // output port
+#define EchoPin 11  // input port
 // Gray detection pin
 #define track1 3  // left
 #define track2 2  // right
@@ -65,7 +66,7 @@ int getDistance()
   digitalWrite(TrigPin, LOW);
 
   distance = pulseIn(EchoPin, HIGH);
-  distance= distance/58; // Convert pulse time to distance in cm
+  distance= distance/58;  // Convert pulse time to distance in cm
   // print the distance value
   //Serial.print(distance);
   //Serial.println("cm");
@@ -75,8 +76,9 @@ int getDistance()
 
 void avoidance()
 {
-  distance = getDistance();     // get the distance
+  distance = getDistance();     // get the distance of obstacle
 
+  // If distance <= 13cm, start avoiding the obstacle
   if(distance <= 13){    // Make the car bypass the obstacle and return         
     motorRun(TURNLEFT);  // to the track through a series of actions
     delay(1350);                           
@@ -107,9 +109,9 @@ void Sensor_Read()
 
 void tracking() 
 {
-  if (Sensor[0] > 100 && Sensor[1] < 100)  // 1-0 左转
+  if (Sensor[0] > 100 && Sensor[1] < 100)  // 1-0 - turn left
     motorRun(TURNLEFT); 
-  else if (Sensor[0] < 100 && Sensor[1] > 100)  // 0-1 右转
+  else if (Sensor[0] < 100 && Sensor[1] > 100)  // 0-1 - turn right
     motorRun(TURNRIGHT); 
   else
     motorRun(FORWARD);
