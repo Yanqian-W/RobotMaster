@@ -1,4 +1,4 @@
-# Track and Obstacle Avoidance for vehicle
+# Track and Obstacle Avoidance for Vehicle
 
 Programming on a microcontroller to achieve:
 - Vehicle movement
