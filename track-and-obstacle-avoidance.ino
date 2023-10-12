@@ -102,9 +102,9 @@ void Sensor_Read()
   Sensor[0] = analogRead(A2); 
   Sensor[1] = analogRead(A3);
   //print the value of gray scale sensors
-	Serial.print(Sensor[0]);
-	Serial.print("   ");
-	Serial.println(Sensor[1]);
+  Serial.print(Sensor[0]);
+  Serial.print("   ");
+  Serial.println(Sensor[1]);
 }
 
 void tracking() 
